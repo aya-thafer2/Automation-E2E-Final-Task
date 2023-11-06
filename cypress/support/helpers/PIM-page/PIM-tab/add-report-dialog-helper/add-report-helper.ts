@@ -4,10 +4,19 @@ import AddReport from "../../../../page-object-models/PIM-page/reports-tab/add-r
 
 export default class AddReportHelper {
 
-    static createReport(){
+    static createReport() {
         AddReport.typeReportName()
-        AddReport.selectSelectionCriteria(LocationInit.getLocationName(), JobTitleInit.getJobTitle()) 
+        AddReport.selectSelectionCriteria(LocationInit.getLocationName(), JobTitleInit.getJobTitle())
         AddReport.selectDisplayFields()
-        AddReport.clickSaveBtn() 
+        AddReport.clickSaveBtn()
+    }
+    static verifyReportData() {
+        AddReport.verifyReportName();
+        AddReport.verifyHeadersData();
+        AddReport.verifyReportTableData();
+        AddReport.verifyReportRecordsCount();
+    }
+    static deleteReport(){
+        AddReport.deleteReport();
     }
 }

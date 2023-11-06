@@ -9,6 +9,7 @@ import SalaryComponentsDialogHelper from "../salary-components-dialog/salary-com
 export default class AddEmployeeDialogHelper {
 
     private static EmpNumbers: number[] = [];
+    private static EmpNames: string[] = [];
 
     static setEmpNumber(empNumber: number, index: number) {
         this.EmpNumbers[index] = empNumber;
@@ -19,12 +20,16 @@ export default class AddEmployeeDialogHelper {
     static getEmployeesNumbers(): number[] {
         return this.EmpNumbers
     }
+    static getEmployeesNames(): string[] {
+        return this.EmpNames
+    }
 
     static async addNewEmployee() {
         cy.addEmployee('POST', URLs.employee, EmployeeInit.initEmployee()).then((response) => {
             this.EmpNumbers.push(response.data.empNumber);
             JobDetailsDialogHelper.associateEmployeeWithCreatedLocationAndJobTitle(response.data.empNumber)
             SalaryComponentsDialogHelper.associateEmployeeWithSalary(response.data.empNumber)
+            this.EmpNames.push(response.data.firstName);
         })
     }
 
@@ -34,6 +39,11 @@ export default class AddEmployeeDialogHelper {
             promises.push(this.addNewEmployee());
         }
         await Promise.all(promises);
+    }
+
+    static deleteEmployee() {
+        const ids = this.EmpNumbers.map(number => number);
+        cy.deleteEmployee('DELETE', URLs.employee, { ids });
     }
 
 }

@@ -16,9 +16,15 @@ export default class LocationDialogHelper {
             LocationInit.initLocation().then((payload: any) => {
                 cy.createLocation('POST', URLs.location, payload).then((response) => {
                     this.setLocationId(response.data.id)
-                    console.log(response.data.id)
                 })
             })
         });
+    }
+    static deleteLocation(){
+        const payload = {
+            ids: [this.getLocationId()]
+          };
+          
+        cy.deleteLocation('DELETE', URLs.location, payload)
     }
 }

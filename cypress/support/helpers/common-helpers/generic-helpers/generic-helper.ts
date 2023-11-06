@@ -9,59 +9,64 @@ export default class GenericHelper {
             cy.login(empData.firstName, empData.password);
         })
     }
-    static genericRandomUsername(){
+    static genericRandomUsername() {
         return faker.internet.userName();
     }
-    static genericRandomFirstName(){
+    static genericRandomFirstName() {
         return faker.person.firstName();
     }
-    static genericRandomMiddleName(){
+    static genericRandomMiddleName() {
         return faker.person.middleName();
     }
-    static genericRandomLastName(){
+    static genericRandomLastName() {
         return faker.person.lastName();
     }
-    static genericRandomEmail(){
-        return  faker.internet.email();
+    static genericRandomEmail() {
+        return faker.internet.email();
     }
-    static genericRandomNumberThreeDigits(){
+    static genericRandomNumberThreeDigits() {
         const Random3DigitNumber = faker.number.int({ min: 100, max: 999 });
         return Random3DigitNumber;
     }
-    static genericRandomNumberFourDigits(){
+    static genericRandomNumberFourDigits() {
         const Random4DigitNumber = faker.number.int({ min: 1000, max: 9999 });
         return Random4DigitNumber;
     }
 
-    static genericRandomLocation(){
+    static genericRandomLocation() {
         return faker.location.street();
     }
-    static genericRandomCity(){
+    static genericRandomCity() {
         return faker.location.city();
     }
-    static genericRandomProvince(){
+    static genericRandomProvince() {
         return faker.location.state();
     }
-    static genericRandomZipCode(){
+    static genericRandomZipCode() {
         return faker.location.zipCode();
     }
-    static genericRandomCountryCode(){
+    static genericRandomCountryCode() {
         return faker.location.countryCode();
     }
-    static genericRandomAddress(){
+    static genericRandomAddress() {
         return faker.location.streetAddress();
     }
-    static genericRandomPhone(){
+    static genericRandomPhone() {
         return faker.phone.number();
     }
-    static genericRandomSentence(){
+    static genericRandomSentence() {
         return faker.lorem.sentence();
     }
-    static genericRandomJobTitle(){
+    static genericRandomJobTitle() {
         return faker.person.jobTitle();
     }
-    static genericRandomSalaryAmount(){
+    static genericRandomSalaryAmount() {
         const RandomSalaryAmount = faker.number.int({ min: 1000, max: 60000 });
         return RandomSalaryAmount.toString();
+    }
+    static waitUntilVisible(loader: Cypress.Chainable<JQuery<HTMLElement>>): Cypress.Chainable<any> {
+        return cy.wrap(undefined).then(() => {
+            loader.should('not.exist');
+        })
     }
 }

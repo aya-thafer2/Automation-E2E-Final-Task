@@ -1,0 +1,8 @@
+{
+  "salaryComponent": "Salary",
+  "salaryAmount": "50000",
+  "currencyId": "USD",
+  "payFrequencyId": "4",
+  "comment": null,
+  "addDirectDeposit": false
+}

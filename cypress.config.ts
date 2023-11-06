@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const allureWriter = require("@shelex/cypress-allure-plugin/writer");
+import { configureAllureAdapterPlugins } from '@mmisty/cypress-allure-adapter/plugins';
 
 module.exports = defineConfig({
   e2e: {
@@ -7,6 +8,7 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      configureAllureAdapterPlugins(on, config);
       allureWriter(on, config);
       return config;
     },
@@ -14,7 +16,8 @@ module.exports = defineConfig({
     env: {
       allureReuseAfterSpec: true,
       download_dir: "./cypress/downloads",
-      snapshotOnly: true
+      snapshotOnly: true,
+      allure: true,
     },
     "retries": {
       "runMode": 1,

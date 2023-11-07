@@ -1,1 +1,0 @@
-{"method":"POST","url":"/web/index.php/api/v2/pim/employees/589/salary-components","body":{"salaryComponent":"Salary","salaryAmount":"1093","currencyId":"USD","comment":null,"addDirectDeposit":false}}

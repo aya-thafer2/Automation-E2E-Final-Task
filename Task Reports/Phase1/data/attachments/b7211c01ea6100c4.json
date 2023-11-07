@@ -1,3 +1,0 @@
-POST
-/web/index.php/api/v2/admin/locations
-{"name":"Tillman Village","countryCode":"PS","province":"Maryland","city":"East Gilbert","address":"123 Jadon Pass","zipCode":"7951","phone":"+44 161 999 8888","fax":"+44 161 999 8888","note":"Audacia correptius casso aperio."}

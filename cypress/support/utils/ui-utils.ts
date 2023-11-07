@@ -13,8 +13,8 @@ function getByPlaceholder(field: string) {
 function login(userName: string, password: string) {
     cy.intercept("/web/index.php/dashboard/index").as("LoginPage");
     cy.visit('/')
-    cy.getByPlaceholder('Username').type(userName);
-    cy.getByPlaceholder('Password').type(password);
+    cy.getByPlaceholder('username').type(userName);
+    cy.getByPlaceholder('password').type(password);
     cy.get('button').click();
     cy.contains('.oxd-topbar-header-title', "Dashboard").should("exist");
 }

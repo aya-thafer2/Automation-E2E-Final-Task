@@ -2,6 +2,7 @@
 import EmployeeInit from "../../../initializers/PIM-page/add-employee-dialog/employee-init";
 import JobDialogHelper from "../../admin-page/job-dialog/job-dialog-helper";
 import LocationDialogHelper from "../../admin-page/location-dialog/location-dialog-helper";
+import CommonAPIHelper from "../../common-helpers/api-helpers/common-api-helper";
 import { URLs } from "../../common-helpers/api-helpers/urls-helper";
 import JobDetailsDialogHelper from "../job-details-dialog/job-details-dialog-helper";
 import SalaryComponentsDialogHelper from "../salary-components-dialog/salary-components-dialog-helper";
@@ -43,7 +44,7 @@ export default class AddEmployeeDialogHelper {
 
     static deleteEmployee() {
         const ids = this.EmpNumbers.map(number => number);
-        cy.deleteEmployee('DELETE', URLs.employee, { ids });
+        CommonAPIHelper.delete(URLs.employee, ids)
     }
 
 }

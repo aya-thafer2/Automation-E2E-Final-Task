@@ -25,19 +25,27 @@ export default class AddEmployeeDialogHelper {
         return this.EmpNames
     }
 
-    static async addNewEmployee() {
-        cy.addEmployee('POST', URLs.employee, EmployeeInit.initEmployee()).then((response) => {
-            this.EmpNumbers.push(response.data.empNumber);
-            JobDetailsDialogHelper.associateEmployeeWithCreatedLocationAndJobTitle(response.data.empNumber)
-            SalaryComponentsDialogHelper.associateEmployeeWithSalary(response.data.empNumber)
-            this.EmpNames.push(response.data.firstName);
-        })
+    static addNewEmployee(createJobDetails: boolean, createSalaryComponent: boolean): Cypress.Chainable<any> {
+        return cy.wrap(undefined).then(() => {
+            cy.addEmployee('POST', URLs.employee, EmployeeInit.initEmployee()).then((response) => {
+                this.EmpNumbers.push(response.data.empNumber);
+
+                if (createJobDetails) {
+                    JobDetailsDialogHelper.associateEmployeeWithCreatedLocationAndJobTitle(response.data.empNumber);
+                }
+                if (createSalaryComponent) {
+                    SalaryComponentsDialogHelper.associateEmployeeWithSalary(response.data.empNumber)
+                }
+                
+                this.EmpNames.push(response.data.firstName);
+            })
+        });
     }
 
-    static async addEmployees(count: number) {
+    static async addEmployees(count: number, createJobDetails: boolean, createSalaryComponent: boolean) {
         const promises = [];
         for (let i = 0; i < count; i++) {
-            promises.push(this.addNewEmployee());
+            promises.push(this.addNewEmployee(createJobDetails, createSalaryComponent));
         }
         await Promise.all(promises);
     }

@@ -1,0 +1,3 @@
+POST
+/web/index.php/api/v2/admin/job-titles
+{"title":"Customer Creative Director","description":"Adeo terror itaque.","specification":null,"note":""}

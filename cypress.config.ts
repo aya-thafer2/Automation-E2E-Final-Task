@@ -19,10 +19,10 @@ module.exports = defineConfig({
       snapshotOnly: true,
       allure: true,
     },
-    "retries": {
-      "runMode": 1,
-      "openMode": 1
-    },
+    // "retries": {
+    //   "runMode": 1,
+    //   "openMode": 1
+    // },
     allure: true,
     allureResultsPath: "allure-results",
     videosFolder: "allure-results/",

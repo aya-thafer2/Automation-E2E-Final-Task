@@ -27,16 +27,18 @@ export default class CreateClaimRequestHelper {
             cy.createClaimRequest('POST', URLs.claim, payload).then((response) => {
                 this.setClaimId(response.data.id);
             }).then(() => {
-                this.attachExpense(); 
+                this.attachExpense();
+                this.submitClaim();
             })
         })
     }
-    static attachExpense() {    
+    static attachExpense() {
         cy.attachExpense('POST', URLs.attachExpense(this.getClaimId()), AttachExpenseInit.initAttachExpense()).then((response) => {
             this.setExpenseId(response.data.id);
         })
     }
     static submitClaim() {
-
+        const Payload = { action: "SUBMIT" }
+        cy.submitClaim('PUT', URLs.submitClaim(this.getClaimId()), Payload)
     }
 }

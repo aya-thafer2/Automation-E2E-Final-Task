@@ -12,7 +12,10 @@ import SalaryComponentsDialogHelper from "../salary-components-dialog/salary-com
 export default class AddEmployeeDialogHelper {
 
     private static EmpNumbers: number[] = [];
-    private static EmpNames: string[] = [];
+    private static EmpFirstNames: string[] = [];
+    private static EmpMiddleName: string;
+    private static EmpLastName: string;
+    private static EmpFullName: string;
 
     static setEmpNumber(empNumber: number, index: number) {
         this.EmpNumbers[index] = empNumber;
@@ -23,8 +26,26 @@ export default class AddEmployeeDialogHelper {
     static getEmployeesNumbers(): number[] {
         return this.EmpNumbers
     }
-    static getEmployeesNames(): string[] {
-        return this.EmpNames
+    static getEmpFirstNames(): string[] {
+        return this.EmpFirstNames
+    }
+    static setEmpFullName(EmpFullName: string) {
+        this.EmpFullName = EmpFullName;
+    }
+    static getEmpFullName(): string {
+        return this.EmpFullName
+    }
+    static setEmpMiddleName(EmpMiddleName: string) {
+        this.EmpMiddleName = EmpMiddleName;
+    }
+    static getEmpMiddleName(): string {
+        return this.EmpMiddleName
+    }
+    static setEmpLastName(EmpLastName: string) {
+        this.EmpLastName = EmpLastName;
+    }
+    static getEmpLastName(): string {
+        return this.EmpLastName
     }
 
     static addNewEmployee(createJobDetails: boolean, createSalaryComponent: boolean): Cypress.Chainable<any> {
@@ -38,8 +59,9 @@ export default class AddEmployeeDialogHelper {
                 if (createSalaryComponent) {
                     SalaryComponentsDialogHelper.associateEmployeeWithSalary(response.data.empNumber)
                 }
-
-                this.EmpNames.push(response.data.firstName);
+                this.EmpFirstNames.push(response.data.firstName);
+                this.setEmpMiddleName(response.data.middleName);
+                this.setEmpLastName(response.data.lastName);
             })
         });
     }
@@ -54,6 +76,7 @@ export default class AddEmployeeDialogHelper {
 
     static createEmployeeWithLoginDetails() {
         this.addNewEmployee(false, false).then((response) => {
+            this.setEmpFullName(response.data.firstName + ' ' + response.data.middleName + ' ' + response.data.lastName);
             LoginDetailsInit.initLoginDetails(response.data.empNumber).then((payload) => {
                 cy.createLoginDetails('POST', URLs.user, payload);
             })

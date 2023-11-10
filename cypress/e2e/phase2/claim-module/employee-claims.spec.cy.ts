@@ -5,9 +5,9 @@ import ExpenseTypesHelper from "../../../support/helpers/claim-page/expense-type
 import CreateClaimRequestHelper from "../../../support/helpers/claim-page/submit-claim-tab/create-claim-request-helper"
 import GenericHelper from "../../../support/helpers/common-helpers/generic-helpers/generic-helper"
 
-describe('Claim Request Flows',()=>{
-    
-    beforeEach(()=>{
+describe('Claim: Claim Request Flows', () => {
+
+    beforeEach(() => {
         //admin login to the system
         GenericHelper.adminLogin();
         //admin create event
@@ -24,38 +24,42 @@ describe('Claim Request Flows',()=>{
         AddEmployeeDialogHelper.logout();
     })
 
-    afterEach(()=>{
+    afterEach(() => {
         //delete event
         EventHelper.deleteEvent();
         //delete expense type
-        ExpenseTypesHelper.deleteExpenseType() 
+        ExpenseTypesHelper.deleteExpenseType()
         //delete employee
         AddEmployeeDialogHelper.deleteEmployee()
     })
 
-    it('The Admin should be able to Approve Claim Requests',()=>{
+    it('Claim - Assign Claim: The Admin should be able to Approve Claim Requests', () => {
         //admin login to the system
         GenericHelper.adminLogin();
         //Opens the "Claim page"and filters for "Employee Claims"
         EmployeeClaimsHelper.visitEmployeeClaims();
         //search for that employee
-        EmployeeClaimsHelper.searchEmployeeName(); 
+        EmployeeClaimsHelper.searchEmployeeName();
         //clicks "View Details" for that employee(Assign Claim)
         EmployeeClaimsHelper.viewEmployeeDetails();
         //clicks "Approve"
         EmployeeClaimsHelper.clickApprove()
+        //verify Claim Record
+        EmployeeClaimsHelper.verifyClaimRecord(true) 
     })
 
-    it.only('The Admin should be able to Reject Claim Requests',()=>{
+    it('Claim - Assign Claim: The Admin should be able to Reject Claim Requests', () => {
         //admin login to the system
         GenericHelper.adminLogin();
         //Opens the "Claim page"and filters for "Employee Claims"
         EmployeeClaimsHelper.visitEmployeeClaims();
         //search for that employee
-        EmployeeClaimsHelper.searchEmployeeName(); 
+        EmployeeClaimsHelper.searchEmployeeName();
         //clicks "View Details" for that employee(Assign Claim)
         EmployeeClaimsHelper.viewEmployeeDetails();
         //clicks "Reject"
         EmployeeClaimsHelper.clickReject()
+        //verify Claim Record
+        EmployeeClaimsHelper.verifyClaimRecord(false)
     })
 })

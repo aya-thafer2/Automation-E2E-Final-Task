@@ -12,16 +12,18 @@ import SalaryComponentsDialogHelper from "../salary-components-dialog/salary-com
 export default class AddEmployeeDialogHelper {
 
     private static EmpNumbers: number[] = [];
+    private static EmpNumber: number;
     private static EmpFirstNames: string[] = [];
+    private static EmpFirstName: string;
     private static EmpMiddleName: string;
     private static EmpLastName: string;
     private static EmpFullName: string;
 
-    static setEmpNumber(empNumber: number, index: number) {
-        this.EmpNumbers[index] = empNumber;
+    static setEmpNumber(EmpNumber:number) {
+       this.EmpNumber=EmpNumber;
     }
-    static getEmpNumber(index: number): number | undefined {
-        return this.EmpNumbers[index];
+    static getEmpNumber(): number{
+        return this.EmpNumber;
     }
     static getEmployeesNumbers(): number[] {
         return this.EmpNumbers
@@ -40,6 +42,12 @@ export default class AddEmployeeDialogHelper {
     }
     static getEmpMiddleName(): string {
         return this.EmpMiddleName
+    }
+    static setEmpFirstName(EmpFirstName: string) {
+        this.EmpFirstName = EmpFirstName;
+    }
+    static getEmpFirstName(): string {
+        return this.EmpFirstName
     }
     static setEmpLastName(EmpLastName: string) {
         this.EmpLastName = EmpLastName;
@@ -60,8 +68,10 @@ export default class AddEmployeeDialogHelper {
                     SalaryComponentsDialogHelper.associateEmployeeWithSalary(response.data.empNumber)
                 }
                 this.EmpFirstNames.push(response.data.firstName);
+                this.setEmpFirstName(response.data.firstName)
                 this.setEmpMiddleName(response.data.middleName);
                 this.setEmpLastName(response.data.lastName);
+                this.setEmpNumber(response.data.empNumber);
             })
         });
     }
@@ -91,8 +101,8 @@ export default class AddEmployeeDialogHelper {
         cy.logout();
     }
     static deleteEmployee() {
-        const ids = this.EmpNumbers.map(number => number);
-        CommonAPIHelper.delete(URLs.employee, ids)
+        const empNum = this.getEmpNumber();
+        CommonAPIHelper.delete(URLs.employee, [empNum])
     }
 
 }

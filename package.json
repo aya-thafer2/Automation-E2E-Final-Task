@@ -19,8 +19,8 @@
     "clear:cypress": "rimraf cypress/screenshots cypress/videos",
     "cypress": "npm run allure:clear && npx cypress run --browser electron --spec cypress/e2e/pahse1/PIM-page/reports.spec.cy.ts --env allure=true && npm run allure:report",
     "ul-regression-allure": "npx cypress run --browser electron --spec cypress/e2e/pahse1/PIM-page/reports.spec.cy.ts --env allure=true && npm run allure:report",
-    "employeeReport": "npx cypress run --browser electron --spec cypress/e2e/pahse1/PIM-page/reports.spec.cy.ts --env allure=true && npm run allure:report",
     "test": "npx cypress run --browser electron --spec cypress/e2e/pahse1/PIM-page/reports.spec.cy.ts",
+    "employeeReport": "npx cypress run --browser electron --spec cypress/e2e/pahse1/PIM-page/reports.spec.cy.ts --env allure=true && npm run allure:report",
     "claim": "npx cypress run --browser electron --spec cypress/e2e/phase2/claim-module/employee-claims.spec.cy.ts --env allure=true && npm run allure:report"
   }
 }

@@ -17,4 +17,11 @@ export default class EmployeeClaimsHelper{
     static clickReject(){
         EmployeeClaimsTab.clickReject()
     }
+    static verifyClaimRecord(approve: boolean){
+        this.visitEmployeeClaims();
+        this.searchEmployeeName(); 
+        EmployeeClaimsTab.verifySubmittedDate();
+        EmployeeClaimsTab.verifyStatus(approve);
+        EmployeeClaimsTab.verifyAmount();
+    }
 }

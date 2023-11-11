@@ -25,9 +25,6 @@ class AddReport {
         this.setReportName()
         this.elements.inputFields().contains('Report Name').getByPlaceholder('Type here ...').type(this.getReportName())
     }
-    static fillReportInfo() {
-
-    }
     static selectSelectionCriteria(LocationName: string, JobTitleName: string) {
         this.SelectionCriteria('Location', LocationName)
         this.SelectionCriteria('Job Title', JobTitleName)
@@ -108,7 +105,7 @@ class AddReport {
     }
 
     static verifyReportTableData() {
-        const EmployeesFN = AddEmployeeDialogHelper.getEmployeesNames().map(FN => FN);
+        const EmployeesFN = AddEmployeeDialogHelper.getEmpFirstNames().map(FN => FN);
         const SalaryAmounts = SalaryComponentsDialogHelper.getSalaryAmounts().map(amount => amount);
         for (let i = 0; i < EmployeesFN.length; i++) {
             this.elements.tableBody()
@@ -128,7 +125,7 @@ class AddReport {
             // Verify the count of records based on the number of employees
             this.elements.tableBody()
                 .find('.rgRow')
-                .should('have.length', AddEmployeeDialogHelper.getEmployeesNames().length);
+                .should('have.length', AddEmployeeDialogHelper.getEmpFirstNames().length);
 
             // Verify the count of records based on the number in the Label above the table
             cy.get('.oxd-report-table-header').find('.oxd-text--count').invoke('text').then((label) => {

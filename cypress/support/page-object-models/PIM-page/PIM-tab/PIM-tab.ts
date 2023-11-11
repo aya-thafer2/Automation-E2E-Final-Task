@@ -10,9 +10,9 @@ class PimTab {
 
     static selectPIMTab() {
         this.elements.mainMenuItems().contains('PIM').click();
-        this.checkPimPage()
+        this.checkPimPageTitle()
     }
-    static checkPimPage() {
+    static checkPimPageTitle() {
         this.elements.pageHeader().children().eq(0).should('contain', 'PIM')
     }
     static selectReportsTab() {

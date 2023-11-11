@@ -1,4 +1,5 @@
 import LocationInit from "../../../initializers/admin-page/location-dialog/location-init";
+import CommonAPIHelper from "../../common-helpers/api-helpers/common-api-helper";
 import { URLs } from "../../common-helpers/api-helpers/urls-helper";
 
 export default class LocationDialogHelper {
@@ -21,10 +22,6 @@ export default class LocationDialogHelper {
         });
     }
     static deleteLocation(){
-        const payload = {
-            ids: [this.getLocationId()]
-          };
-          
-        cy.deleteLocation('DELETE', URLs.location, payload)
+          CommonAPIHelper.delete(URLs.location, [this.getLocationId()])
     }
 }

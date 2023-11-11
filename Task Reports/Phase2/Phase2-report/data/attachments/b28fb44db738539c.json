@@ -1,0 +1,3 @@
+POST
+/web/index.php/api/v2/claim/expenses/types
+{"name":"Expense9200","description":"Utroque tantillus conscendo vociferor decretum super aliquam argentum alii titulus.","status":true}

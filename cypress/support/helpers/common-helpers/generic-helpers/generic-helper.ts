@@ -4,9 +4,9 @@ export default class GenericHelper {
     static adminLogin() {
         cy.login('Admin', 'admin123');
     }
-    static userLogin() {
-        cy.fixture('PIM/employee-info.json').then((empData) => {
-            cy.login(empData.firstName, empData.password);
+    static userLogin(username:string) {
+        cy.fixture('PIM-page/add-employee-dialog/login-details.json').then((empData) => {
+            cy.login(username, empData.password);
         })
     }
     static genericRandomUsername() {

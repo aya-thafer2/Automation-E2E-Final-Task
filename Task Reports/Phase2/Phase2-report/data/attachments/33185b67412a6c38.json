@@ -1,0 +1,3 @@
+POST
+/web/index.php/api/v2/claim/requests/24/expenses
+{"expenseTypeId":26,"date":"2023-11-10","amount":"4399","note":"Teneo approbo armarium."}

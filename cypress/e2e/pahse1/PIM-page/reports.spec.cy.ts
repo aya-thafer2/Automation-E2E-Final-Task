@@ -15,8 +15,10 @@ describe('PIM: Reports', () => {
         LocationDialogHelper.createLocation();
         // //create 1 jobTitle 
         JobDialogHelper.createJobTitle();
-        // //create 3 employees
-        AddEmployeeDialogHelper.addEmployees(3)
+
+        // //create 3 employees and associate them with location, Job Title, and Salary 
+        //the second Argument is for create JobDetails, the third Argument is for create SalaryComponent
+        AddEmployeeDialogHelper.addEmployees(3, true, true)
     })
 
     afterEach(() => {

@@ -1,0 +1,1 @@
+{"method":"POST","url":"/web/index.php/api/v2/admin/users","body":{"empNumber":145,"password":"123456h","status":true,"userRoleId":2,"username":"Heath.Collins"}}

@@ -1,0 +1,3 @@
+POST
+/web/index.php/api/v2/pim/employees
+{"firstName":"Ernest","middleName":"Logan","lastName":"Nikolaus","empPicture":null,"employeeId":"4604"}

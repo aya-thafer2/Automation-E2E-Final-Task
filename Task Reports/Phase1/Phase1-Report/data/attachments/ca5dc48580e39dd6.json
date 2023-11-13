@@ -1,0 +1,1 @@
+{"method":"POST","url":"/web/index.php/api/v2/pim/employees","body":{"firstName":"Ernest","middleName":"Logan","lastName":"Nikolaus","empPicture":null,"employeeId":"4604"}}

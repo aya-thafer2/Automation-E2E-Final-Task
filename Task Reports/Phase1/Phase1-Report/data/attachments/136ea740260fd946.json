@@ -1,0 +1,3 @@
+POST
+/web/index.php/api/v2/admin/job-titles
+{"title":"Human Functionality Facilitator","description":"Tantillus terminatio cicuta.","specification":null,"note":""}

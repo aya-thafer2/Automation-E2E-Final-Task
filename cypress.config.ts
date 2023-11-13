@@ -6,6 +6,7 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://opensource-demo.orangehrmlive.com',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+    video: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
       configureAllureAdapterPlugins(on, config);

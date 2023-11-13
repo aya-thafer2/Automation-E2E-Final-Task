@@ -1,0 +1,3 @@
+POST
+/web/index.php/api/v2/pim/employees/56/salary-components
+{"salaryComponent":"Salary","salaryAmount":"48059","currencyId":"USD","comment":null,"addDirectDeposit":false}

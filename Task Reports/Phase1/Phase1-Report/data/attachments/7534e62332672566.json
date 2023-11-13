@@ -1,3 +1,0 @@
-POST
-/web/index.php/api/v2/pim/employees
-{"firstName":"Jazmyne","middleName":"Elliott","lastName":"Gerlach","empPicture":null,"employeeId":"7558"}
